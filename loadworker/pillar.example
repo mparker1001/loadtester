@@ -1,4 +1,4 @@
-loadtest:
+loadworker:
   user: bench
   group: bench
   home: /home/bench

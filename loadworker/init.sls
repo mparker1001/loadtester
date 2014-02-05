@@ -1,7 +1,7 @@
-{% set loadtest = pillar.get('loadtest', {}) -%}
-{% set user = loadtest.get('user', 'bench') -%}
-{% set group = loadtest.get('group', user) -%}
-{% set home = loadtest.get('home', '/home/bench') -%}
+{% set loadworker = pillar.get('loadworker', {}) -%}
+{% set user = loadworker.get('user', 'bench') -%}
+{% set group = loadworker.get('group', user) -%}
+{% set home = loadworker.get('home', '/home/bench') -%}
 
 httpd-tools:
   pkg:
@@ -30,7 +30,7 @@ siege:
     - group: {{ group }}
     - mode: 600
     - source:
-      - salt://loadtest/files/publickeys/id_rsa.pub
+      - salt://loadworker/files/publickeys/id_rsa.pub
     - require:
       - user: {{ user }}
       - file: {{ home }}/.ssh

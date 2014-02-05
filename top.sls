@@ -1,5 +1,5 @@
 base:
-  '*loadtest*':
-    - loadtest
+  '*loadworker*':
+    - loadworker
   '*loadmaster*':
     - loadmaster
