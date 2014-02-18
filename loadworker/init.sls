@@ -30,7 +30,7 @@ siege:
     - group: {{ group }}
     - mode: 600
     - source:
-      - salt://loadworker/files/publickeys/id_rsa.pub
+      - salt://loadworker/files/keys/id_rsa.pub
     - require:
       - user: {{ user }}
       - file: {{ home }}/.ssh

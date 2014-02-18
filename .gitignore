@@ -1,1 +1,2 @@
-loadworker/files/publickeys/id_rsa.pub
+loadworker/files/keys/id_rsa.pub
+loadmaster/files/keys/id_rsa
