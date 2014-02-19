@@ -28,6 +28,26 @@ httpd:
     - enable: True
     - require:
       - pkg: php
+    - watch:
+      - file: /etc/httpd/conf/httpd.conf
+      - file: /etc/httpd/conf.d/welcome.conf
+
+/etc/httpd/conf/httpd.conf:
+  file.managed:
+    - template: jinja
+    - source: salt://loadmaster/files/config/httpd.conf
+    - require:
+      - pkg: httpd
+
+/etc/httpd/conf.d/welcome.conf:
+  file.absent:
+    - require:
+      - pkg: httpd
+
+iptables:
+  service:
+    - dead
+    - enable: False
 
 get-sproxy:
   file.managed:
@@ -89,6 +109,16 @@ https://github.com/mparker1001/loadmaster-web:
   file.managed:
       - template: jinja
       - source: salt://loadmaster/files/config/config.inc.php
+
+{{ docroot }}/siege/cache:
+  file.directory:
+    - mode: 755
+    - user: {{ user }}
+
+{{ docroot }}/ab/output:
+  file.directory:
+    - mode: 755
+    - user: {{ user }}
 
 /etc/hosts:
   file.managed:

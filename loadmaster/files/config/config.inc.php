@@ -1,18 +1,13 @@
-{%- set nets=salt['publish.publish']('*loadworker*','network.interfaces') -%}
-{%- set i = 1 -%}
-{%- for n in nets %}
-{%- set i = i + 1 -%}
-{%- endfor %}
-
 <?php
 //Number of slave servers (ensure that all slave servers have an entry in /etc/hosts)
-$servers = '{{ i }}';
+{%- set nets=salt['publish.publish']('*loadworker*','network.interfaces') %}
+$servers = '{{ nets|count }}';
 
 //Full path to shell script that performs index - used by indexer.php
-$index_bin = "{{ docroot }}/bin/indexer.sh";
+$index_bin = "{{ pillar['loadmaster']['docroot'] }}/bin/indexer.sh";
 
 //Full path to cache directory - used by indexer.php and displaylog.php
-$cache_base_path = "{{ docroot }}/siege/cache/";
+$cache_base_path = "{{ pillar['loadmaster']['docroot'] }}/siege/cache/";
 
 //Relative URL Path to cache directory - used by indexer.php
 $cache_url_path = "./cache";

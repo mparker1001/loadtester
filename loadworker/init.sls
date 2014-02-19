@@ -11,6 +11,13 @@ siege:
   pkg:
     - installed
 
+/etc/siege/siegerc:
+  file.managed:
+    - source:
+      - salt://loadworker/files/config/siegerc
+    - require:
+      - pkg: siege
+
 {{ user }}:
   user.present:
     - shell: /bin/bash

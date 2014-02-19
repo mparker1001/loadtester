@@ -2,3 +2,8 @@ loadmaster:
   user: apache
   group: apache
   home: /home/apache
+  compileroot: /root
+  docroot: /var/www/html
+  whitelistips:
+    - 1.2.3.4
+    - 1.2.3.5
