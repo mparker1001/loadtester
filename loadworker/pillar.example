@@ -2,3 +2,4 @@ loadworker:
   user: bench
   group: bench
   home: /home/bench
+  pubkey: ssh-rsa .... stuff .... comment

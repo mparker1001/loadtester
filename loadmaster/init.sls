@@ -87,7 +87,8 @@ sproxy:
     - user: {{ user }}
     - group: {{ group }}
     - mode: 600
-    - source: salt://loadmaster/files/keys/id_rsa
+    contents: |
+      {{ loadmaster.get('privkey', '')|indent(7, False) }}
     - require:
       - file: /home/{{ user }}/.ssh
 
