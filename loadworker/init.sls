@@ -36,8 +36,7 @@ siege:
     - user: {{ user }}
     - group: {{ group }}
     - mode: 600
-    - source:
-      - salt://loadworker/files/keys/id_rsa.pub
+    - contents: {{ loadworker.get('pubkey') }}
     - require:
       - user: {{ user }}
       - file: {{ home }}/.ssh

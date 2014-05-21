@@ -7,3 +7,7 @@ loadmaster:
   whitelistips:
     - 1.2.3.4
     - 1.2.3.5
+  privkey: |
+    -----BEGIN RSA PRIVATE KEY-----
+    stuff
+    -----END RSA PRIVATE KEY-----
