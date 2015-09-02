@@ -87,8 +87,7 @@ sproxy:
     - user: {{ user }}
     - group: {{ group }}
     - mode: 600
-    - contents: |
-        {{ loadmaster.get('privkey', '')|indent(9, False) }}
+    - contents_pillar: loadmaster:privkey
     - require:
       - file: /home/{{ user }}/.ssh
 
