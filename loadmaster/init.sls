@@ -102,7 +102,7 @@ https://github.com/mparker1001/loadmaster-web:
     - rev: master
     - target: {{ docroot }}
     - force: true
-    - requires:
+    - require:
       - file: {{ docroot }}
 
 {{ docroot }}/config.inc.php:
